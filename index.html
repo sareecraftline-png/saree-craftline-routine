@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#173d32" />
+  <meta name="description" content="Saree Craftline-এর দৈনিক রুটিন, নামাজ, কলেজ, স্বাস্থ্য ও ব্যবসার কাজের তালিকা।" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <title>আমার রুটিন • Saree Craftline</title>
+  <style>
+    :root {
+      --green: #173d32;
+      --green-2: #285846;
+      --mint: #e9f1eb;
+      --mint-2: #f4f7f2;
+      --cream: #fbfaf5;
+      --paper: #ffffff;
+      --ink: #1d2b25;
+      --muted: #718078;
+      --line: #e6ebe5;
+      --gold: #c7974e;
+      --orange: #cf8059;
+      --blue: #5c8290;
+      --shadow: 0 10px 28px rgba(23, 61, 50, .08);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--cream); scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans Bengali", "Hind Siliguri", sans-serif; -webkit-tap-highlight-color: transparent; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .app { max-width: 760px; min-height: 100dvh; margin: 0 auto; padding: 0 16px calc(92px + env(safe-area-inset-bottom)); }
+    .hero { background: radial-gradient(circle at 90% 5%, rgba(255,255,255,.14), transparent 35%), linear-gradient(135deg, #173d32, #285846); color: white; margin: 0 -16px 18px; padding: calc(24px + env(safe-area-inset-top)) 20px 23px; border-radius: 0 0 28px 28px; position: relative; overflow: hidden; }
+    .hero:after { content: ""; position: absolute; width: 180px; height: 180px; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; right: -72px; bottom: -105px; box-shadow: 0 0 0 18px rgba(255,255,255,.035), 0 0 0 38px rgba(255,255,255,.025); }
+    .topline { display:flex; align-items:center; justify-content:space-between; gap:12px; position:relative; z-index:1; }
+    .brand { display:flex; align-items:center; gap:10px; }
+    .brand-mark { width:42px; height:42px; display:grid; place-items:center; border-radius:14px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22); font-weight:800; letter-spacing:-1px; }
+    .brand-name { font-weight:750; font-size:15px; line-height:1.25; }
+    .brand-sub { opacity:.72; font-size:11px; margin-top:3px; }
+    .install-btn { background:rgba(255,255,255,.13); color:white; border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:8px 12px; font-size:12px; font-weight:650; }
+    .hello { margin-top:23px; position:relative; z-index:1; }
+    .date { color:rgba(255,255,255,.72); font-size:12px; font-weight:600; }
+    .hello h1 { margin:7px 0 5px; font-size:25px; letter-spacing:-.6px; }
+    .hello p { margin:0; color:rgba(255,255,255,.78); font-size:13px; }
+    .progress-card { position:relative; z-index:1; margin-top:19px; padding:14px 15px; background:rgba(255,255,255,.11); border:1px solid rgba(255,255,255,.15); border-radius:17px; backdrop-filter: blur(8px); }
+    .progress-head { display:flex; justify-content:space-between; align-items:center; font-size:12px; color:rgba(255,255,255,.88); margin-bottom:10px; }
+    .progress-head strong { font-size:15px; color:white; }
+    .progress-track { background:rgba(255,255,255,.2); height:8px; border-radius:99px; overflow:hidden; }
+    .progress-fill { width:0%; height:100%; background:#eac98e; border-radius:99px; transition:width .25s ease; }
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:0 0 20px; }
+    .stat { background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:13px 12px; box-shadow:0 3px 12px rgba(23,61,50,.03); }
+    .stat .emoji { font-size:17px; }
+    .stat strong { display:block; margin-top:5px; font-size:18px; }
+    .stat span { color:var(--muted); font-size:11px; }
+    .section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin:22px 2px 12px; }
+    .section-head h2 { font-size:17px; margin:0; letter-spacing:-.2px; }
+    .section-head p { margin:4px 0 0; color:var(--muted); font-size:11px; }
+    .text-btn { border:0; color:var(--green-2); background:transparent; font-size:12px; font-weight:700; padding:7px 2px; }
+    .filter-row { display:flex; gap:7px; overflow:auto; scrollbar-width:none; padding:0 0 4px; }
+    .filter-row::-webkit-scrollbar { display:none; }
+    .chip { white-space:nowrap; border:1px solid var(--line); background:white; color:var(--muted); border-radius:99px; font-size:11px; padding:8px 12px; }
+    .chip.active { background:var(--green); border-color:var(--green); color:white; }
+    .timeline { display:flex; flex-direction:column; gap:9px; }
+    .routine-item { display:grid; grid-template-columns:68px 1fr 28px; gap:11px; align-items:center; background:white; border:1px solid var(--line); border-radius:17px; padding:12px 12px; transition:.18s ease; }
+    .routine-item.done { background:#f5f8f4; border-color:#d8e5d9; }
+    .routine-item.done .item-title { color:#7c8d83; text-decoration:line-through; }
+    .timebox { background:var(--mint-2); color:var(--green-2); border-radius:12px; text-align:center; padding:8px 4px; font-weight:750; font-size:11px; line-height:1.45; }
+    .item-main { min-width:0; }
+    .item-top { display:flex; align-items:center; gap:6px; margin-bottom:3px; }
+    .item-emoji { font-size:14px; }
+    .item-title { font-size:13px; font-weight:750; line-height:1.35; }
+    .item-desc { font-size:10.5px; color:var(--muted); line-height:1.45; }
+    .item-tag { display:inline-block; font-size:9px; color:var(--muted); background:#f2f4f1; padding:3px 7px; border-radius:99px; margin-top:5px; }
+    .check { appearance:none; width:24px; height:24px; border:1.5px solid #cbd7cd; border-radius:8px; background:white; display:grid; place-items:center; margin:0; }
+    .check:checked { background:var(--green); border-color:var(--green); }
+    .check:checked:after { content:"✓"; font-size:15px; font-weight:800; color:white; line-height:1; }
+    .note { display:flex; align-items:flex-start; gap:10px; padding:13px 14px; background:#fff8e9; border:1px solid #f2e4c8; border-radius:16px; margin-top:16px; color:#6d5836; font-size:11px; line-height:1.55; }
+    .note b { color:#594522; }
+    .tabbar { position:fixed; z-index:5; bottom:0; left:50%; transform:translateX(-50%); width:min(760px,100%); padding:9px 12px calc(9px + env(safe-area-inset-bottom)); display:grid; grid-template-columns:repeat(3,1fr); background:rgba(255,255,255,.96); border-top:1px solid var(--line); backdrop-filter:blur(14px); }
+    .tab { border:0; background:transparent; display:flex; flex-direction:column; align-items:center; gap:4px; color:#829087; font-size:10px; font-weight:650; padding:4px; }
+    .tab .ico { font-size:19px; line-height:1; }
+    .tab.active { color:var(--green); }
+    .tab.active .ico { transform:translateY(-1px); }
+    .page { display:none; }
+    .page.active { display:block; }
+    .panel { background:white; border:1px solid var(--line); border-radius:18px; padding:15px; margin-bottom:12px; }
+    .panel h3 { margin:0 0 7px; font-size:14px; }
+    .panel p { margin:0; color:var(--muted); font-size:11px; line-height:1.6; }
+    .week-list { display:flex; flex-direction:column; gap:9px; }
+    .week-row { display:grid; grid-template-columns:58px 1fr; gap:11px; align-items:center; border:1px solid var(--line); border-radius:15px; background:#fff; padding:12px; }
+    .week-day { background:var(--mint); color:var(--green); border-radius:11px; text-align:center; padding:9px 3px; font-size:11px; font-weight:800; }
+    .week-row strong { display:block; font-size:12px; }
+    .week-row span { color:var(--muted); font-size:10px; display:block; margin-top:3px; line-height:1.4; }
+    .guide-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .guide-card { background:white; border:1px solid var(--line); border-radius:16px; padding:13px; }
+    .guide-card .gicon { font-size:21px; }
+    .guide-card strong { display:block; margin:7px 0 4px; font-size:12px; }
+    .guide-card span { display:block; color:var(--muted); font-size:10px; line-height:1.5; }
+    .settings-row { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--line); }
+    .settings-row:last-child { border-bottom:0; }
+    .settings-row label { font-size:12px; font-weight:650; }
+    .settings-row small { display:block; font-size:10px; font-weight:400; color:var(--muted); margin-top:3px; }
+    .settings-row input { width:110px; border:1px solid var(--line); border-radius:10px; padding:8px; color:var(--ink); background:#fbfcfa; }
+    .primary { display:block; width:100%; border:0; background:var(--green); color:white; padding:12px 15px; border-radius:13px; font-size:12px; font-weight:750; margin-top:12px; }
+    .secondary { border:1px solid var(--line); color:var(--green); background:white; border-radius:12px; padding:10px 13px; font-size:11px; font-weight:700; }
+    .danger { color:#a54f43; border-color:#f0d7d2; }
+    .footer { text-align:center; color:#98a39c; font-size:10px; padding:20px 0 4px; }
+    .empty { text-align:center; padding:22px; background:white; border:1px dashed #ccd9ce; border-radius:17px; color:var(--muted); font-size:12px; }
+    .toast { position:fixed; z-index:20; bottom:calc(82px + env(safe-area-inset-bottom)); left:50%; transform:translate(-50%,16px); background:#203d32; color:white; padding:10px 15px; border-radius:99px; font-size:11px; opacity:0; pointer-events:none; transition:.2s; white-space:nowrap; }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+    @media (min-width:600px) { .app { padding-left:22px; padding-right:22px; } .hero { margin-left:-22px; margin-right:-22px; padding-left:26px; padding-right:26px; } .routine-item { grid-template-columns:76px 1fr 30px; padding:14px; } .item-title { font-size:14px; } }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="topline">
+        <div class="brand">
+          <div class="brand-mark">SC</div>
+          <div><div class="brand-name">আমার প্রতিদিন</div><div class="brand-sub">Saree Craftline • Personal Routine</div></div>
+        </div>
+        <button class="install-btn" id="installBtn" hidden>＋ ইনস্টল</button>
+      </div>
+      <div class="hello">
+        <div class="date" id="todayDate">আজকের তারিখ</div>
+        <h1>আসসালামু আলাইকুম 🌿</h1>
+        <p>ইবাদত, পড়াশোনা, স্বাস্থ্য ও ব্যবসা—সবকিছুর সুন্দর ভারসাম্য।</p>
+      </div>
+      <div class="progress-card">
+        <div class="progress-head"><span>আজকের কাজের অগ্রগতি</span><strong id="progressText">০%</strong></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+    </header>
+
+    <section id="dayPage" class="page active">
+      <div class="stats">
+        <div class="stat"><div class="emoji">✅</div><strong id="doneCount">০</strong><span>সম্পন্ন কাজ</span></div>
+        <div class="stat"><div class="emoji">📋</div><strong id="leftCount">০</strong><span>বাকি কাজ</span></div>
+        <div class="stat"><div class="emoji">🌙</div><strong>৯:৩০</strong><span>ঘুমানোর লক্ষ্য</span></div>
+      </div>
+      <div class="section-head">
+        <div><h2>আজকের রুটিন</h2><p>কাজ শেষ হলে ডান পাশে টিক দাও</p></div>
+        <button class="text-btn" id="resetToday">আজ রিসেট ↻</button>
+      </div>
+      <div class="filter-row" id="filters">
+        <button class="chip active" data-filter="সব">সব</button>
+        <button class="chip" data-filter="ইবাদত">🕌 ইবাদত</button>
+        <button class="chip" data-filter="স্বাস্থ্য">🌿 স্বাস্থ্য</button>
+        <button class="chip" data-filter="ব্যবসা">🛍️ ব্যবসা</button>
+        <button class="chip" data-filter="পড়াশোনা">📚 পড়াশোনা</button>
+        <button class="chip" data-filter="বিশ্রাম">☁️ বিশ্রাম</button>
+      </div>
+      <div class="timeline" id="timeline" style="margin-top:12px"></div>
+      <div class="note"><span>💡</span><div><b>মনে রাখবে:</b> নামাজের সময় ঋতু অনুযায়ী বদলাতে পারে। স্থানীয় আজানের সময়ের সঙ্গে মিলিয়ে সেটিংস থেকে সময় পরিবর্তন করবে। কলেজের সময় বা অন্য কাজ বদলালেও রুটিন নিজের মতো সাজিয়ে নিতে পারবে।</div></div>
+    </section>
+
+    <section id="weekPage" class="page">
+      <div class="section-head"><div><h2>সাপ্তাহিক কনটেন্ট পরিকল্পনা</h2><p>প্রতিদিন ১টি ছবি ও ১টি ভিডিওর লক্ষ্য</p></div></div>
+      <div class="panel"><h3>প্রতিদিনের কনটেন্ট নিয়ম</h3><p>সকালে একই শাড়ির ছবি ও ভিডিও ধারণ করবে। বিকেলে ভিডিও এডিট করবে। সন্ধ্যা ৬টার সময় Meta Business Suite-এ পরের দিনের পোস্ট Schedule করবে।</p></div>
+      <div class="week-list">
+        <div class="week-row"><div class="week-day">শনিবার</div><div><strong>Single Saree Reel</strong><span>শাড়ির পুরো ডিজাইন, পাড় ও আঁচল দেখাও।</span></div></div>
+        <div class="week-row"><div class="week-day">রবিবার</div><div><strong>Multi Photo Post</strong><span>একই শাড়ির ৪–৬টি পরিষ্কার ছবি ও দাম।</span></div></div>
+        <div class="week-row"><div class="week-day">সোমবার</div><div><strong>কাপড়ের ক্লোজআপ Reel</strong><span>বুনন, কাপড়ের ধরন ও ব্লাউজ পিস দেখাও।</span></div></div>
+        <div class="week-row"><div class="week-day">মঙ্গলবার</div><div><strong>Saree Combo Reel</strong><span>কম্বোর সব উপকরণ একসঙ্গে দেখাও।</span></div></div>
+        <div class="week-row"><div class="week-day">বুধবার</div><div><strong>Customer Review</strong><span>অনুমতি নিয়ে ক্রেতার মতামত শেয়ার করো।</span></div></div>
+        <div class="week-row"><div class="week-day">বৃহস্পতিবার</div><div><strong>Single Saree Reel</strong><span>বাস্তব রঙ ও সম্পূর্ণ শাড়ি দেখাও।</span></div></div>
+        <div class="week-row"><div class="week-day">শুক্রবার</div><div><strong>অর্ডার প্যাকিং ভিডিও</strong><span>বিশ্বাস, প্যাকিং ও ডেলিভারির দৃশ্য দেখাও।</span></div></div>
+      </div>
+      <div class="panel" style="margin-top:13px"><h3>প্রস্তাবিত পোস্টের সময়</h3><p>ছবি: দুপুর ১২:৩০ • Reel: রাত ৮:৪৫। এগুলো প্রথমে পরীক্ষা করো; পরে Insights-এর Active Times দেখে ঠিক করবে। পোস্টগুলো আগের দিন সন্ধ্যায় Schedule করবে।</p></div>
+    </section>
+
+    <section id="guidePage" class="page">
+      <div class="section-head"><div><h2>নিজের যত্ন ও নিয়ম</h2><p>ব্যবসার পাশাপাশি নিজের জন্যও সময় রাখো</p></div></div>
+      <div class="guide-grid">
+        <div class="guide-card"><div class="gicon">🕌</div><strong>নামাজ</strong><span>পাঁচ ওয়াক্ত নামাজ সময়মতো আদায় করবে। স্থানীয় ওয়াক্ত অনুযায়ী সময় মিলিয়ে নেবে।</span></div>
+        <div class="guide-card"><div class="gicon">🚶</div><strong>হাঁটা</strong><span>সকালে ১৫–২০ মিনিট স্বাভাবিক গতিতে হাঁটবে।</span></div>
+        <div class="guide-card"><div class="gicon">💪</div><strong>ব্যায়াম</strong><span>হালকা ওয়ার্মআপ, নিজের সামর্থ্য অনুযায়ী ব্যায়াম ও স্ট্রেচিং।</span></div>
+        <div class="guide-card"><div class="gicon">🧠</div><strong>মানসিক বিশ্রাম</strong><span>দুপুরে বিশ্রাম, পরিবারের সঙ্গে সময় এবং ঘুমের আগে মোবাইল বন্ধ।</span></div>
+        <div class="guide-card"><div class="gicon">📚</div><strong>পড়াশোনা</strong><span>প্রতিদিন সন্ধ্যায় অন্তত ৪৫ মিনিট কলেজের পড়া রিভিশন।</span></div>
+        <div class="guide-card"><div class="gicon">🛍️</div><strong>ব্যবসা</strong><span>একটি ছবি, একটি Reel, কাস্টমার মেসেজ ও অর্ডারের হিসাব।</span></div>
+      </div>
+      <div class="section-head"><div><h2>সময় পরিবর্তন</h2><p>নামাজের সময় বদলালে এখানে আপডেট করো</p></div></div>
+      <div class="panel" id="settingsPanel">
+        <div class="settings-row"><div><label for="fajrTime">ফজর</label><small>তোমার দেওয়া সময়</small></div><input type="time" id="fajrTime" value="05:20"></div>
+        <div class="settings-row"><div><label for="zuhrTime">জোহর</label><small>কলেজের মধ্যে</small></div><input type="time" id="zuhrTime" value="13:00"></div>
+        <div class="settings-row"><div><label for="asrTime">আসর</label><small>বিকেল</small></div><input type="time" id="asrTime" value="15:30"></div>
+        <div class="settings-row"><div><label for="maghribTime">মাগরিব</label><small>সন্ধ্যা</small></div><input type="time" id="maghribTime" value="17:20"></div>
+        <div class="settings-row"><div><label for="ishaTime">এশা</label><small>রাত</small></div><input type="time" id="ishaTime" value="20:00"></div>
+        <button class="primary" id="saveTimes">সময় সেভ করো</button>
+      </div>
+      <div class="panel"><h3>ডেটা ও গোপনীয়তা</h3><p>তোমার টিক দেওয়া কাজ ও সময় এই ডিভাইসের ব্রাউজারেই সেভ থাকে। কোনো অ্যাকাউন্ট বা পেমেন্ট দরকার নেই। ব্রাউজারের ডেটা মুছে ফেললে সেভ করা অগ্রগতি মুছে যেতে পারে।</p></div>
+    </section>
+    <div class="footer">ধীরে ধীরে, নিয়মিত — প্রতিদিন একটু ভালো 🌱<br/>Saree Craftline Routine • Free personal app</div>
+  </main>
+
+  <nav class="tabbar" aria-label="মূল মেনু">
+    <button class="tab active" data-page="dayPage"><span class="ico">🗓️</span><span>আজকের রুটিন</span></button>
+    <button class="tab" data-page="weekPage"><span class="ico">📸</span><span>কনটেন্ট প্ল্যান</span></button>
+    <button class="tab" data-page="guidePage"><span class="ico">🌿</span><span>নিজের যত্ন</span></button>
+  </nav>
+  <div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  const routine = [
+    {time:'৫:০০',end:'৫:২০',emoji:'🌅',title:'ঘুম থেকে ওঠা ও ফ্রেশ হওয়া',desc:'পানি পান করো, মুখ ধুয়ে দিনের প্রস্তুতি নাও।',cat:'স্বাস্থ্য'},
+    {time:'৫:২০',end:'৫:৪০',emoji:'🕌',title:'ফজরের নামাজ',desc:'নামাজ ও অল্প সময় যিকির/কুরআন তিলাওয়াত।',cat:'ইবাদত'},
+    {time:'৫:৪০',end:'৬:০০',emoji:'🚶',title:'সকালের হাঁটা',desc:'১৫–২০ মিনিট আরামদায়ক গতিতে হাঁটো।',cat:'স্বাস্থ্য'},
+    {time:'৬:০০',end:'৬:২৫',emoji:'💪',title:'হালকা ব্যায়াম',desc:'ওয়ার্মআপ, সহজ ব্যায়াম ও স্ট্রেচিং।',cat:'স্বাস্থ্য'},
+    {time:'৬:২৫',end:'৬:৪৫',emoji:'🚿',title:'বিশ্রাম ও গোসল',desc:'শরীর ঠান্ডা করো, গোসল ও ফ্রেশ হও।',cat:'বিশ্রাম'},
+    {time:'৬:৪৫',end:'৭:১০',emoji:'🥣',title:'সকালের নাশতা',desc:'পুষ্টিকর নাশতা খাও।',cat:'স্বাস্থ্য'},
+    {time:'৭:১০',end:'৭:৫০',emoji:'📷',title:'শাড়ির ছবি ও ভিডিও ধারণ',desc:'একটি শাড়ির পরিষ্কার ছবি এবং ২–৩টি ছোট ভিডিও ক্লিপ নাও।',cat:'ব্যবসা'},
+    {time:'৭:৫০',end:'৮:২০',emoji:'🎒',title:'কলেজের প্রস্তুতি',desc:'ব্যাগ, বই ও প্রয়োজনীয় জিনিস গুছিয়ে নাও।',cat:'পড়াশোনা'},
+    {time:'৮:২০',end:'৯:০০',emoji:'🚌',title:'কলেজে যাওয়া',desc:'যাতায়াতের সময়।',cat:'পড়াশোনা'},
+    {time:'৯:০০',end:'১:০০',emoji:'🏫',title:'কলেজ',desc:'ক্লাসে মনোযোগ দাও।',cat:'পড়াশোনা'},
+    {time:'১:০০',end:'১:২০',emoji:'🕌',title:'জোহরের নামাজ',desc:'কলেজের বিরতিতে নামাজ আদায় করো।',cat:'ইবাদত'},
+    {time:'১:২০',end:'২:০০',emoji:'🍱',title:'দুপুরের খাবার ও কলেজ',desc:'খাবার খেয়ে ক্লাস/কলেজের কাজ শেষ করো।',cat:'স্বাস্থ্য'},
+    {time:'২:০০',end:'২:৩০',emoji:'🏠',title:'বাসায় ফেরা',desc:'যাতায়াত ও ফ্রেশ হওয়া।',cat:'বিশ্রাম'},
+    {time:'২:৩০',end:'৩:২০',emoji:'☁️',title:'বিশ্রাম / ২০ মিনিট ঘুম',desc:'মোবাইল থেকে দূরে থেকে মন ও শরীরকে বিশ্রাম দাও।',cat:'বিশ্রাম'},
+    {time:'৩:৩০',end:'৩:৫০',emoji:'🕌',title:'আসরের নামাজ',desc:'নামাজ আদায় করো।',cat:'ইবাদত'},
+    {time:'৩:৫০',end:'৪:৩০',emoji:'🎬',title:'ভিডিও এডিট',desc:'অপ্রয়োজনীয় অংশ কাটো, রঙ/আলো ঠিক করো, প্রয়োজনীয় লেখা যোগ করো।',cat:'ব্যবসা'},
+    {time:'৪:৩০',end:'৫:০০',emoji:'✍️',title:'ক্যাপশন ও ছবি প্রস্তুত',desc:'দাম, কাপড়, মাপ, ব্লাউজ পিস ও অর্ডারের তথ্য লিখে রাখো।',cat:'ব্যবসা'},
+    {time:'৫:০০',end:'৫:২০',emoji:'🍵',title:'হালকা বিরতি',desc:'চোখ ও মাথাকে বিশ্রাম দাও।',cat:'বিশ্রাম'},
+    {time:'৫:২০',end:'৫:৪০',emoji:'🕌',title:'মাগরিবের নামাজ',desc:'নামাজ আদায় করো।',cat:'ইবাদত'},
+    {time:'৫:৪০',end:'৬:০০',emoji:'🥛',title:'নাশতা ও বিশ্রাম',desc:'হালকা খাবার খাও।',cat:'স্বাস্থ্য'},
+    {time:'৬:০০',end:'৬:৩০',emoji:'🗓️',title:'পোস্ট Schedule',desc:'Meta Business Suite-এ পরের দিনের দুপুর ১২:৩০-এর ছবি ও রাত ৮:৪৫-এর Reel Schedule করো।',cat:'ব্যবসা'},
+    {time:'৬:৩০',end:'৭:১৫',emoji:'📚',title:'কলেজের পড়াশোনা',desc:'কমপক্ষে ৪৫ মিনিট রিভিশন।',cat:'পড়াশোনা'},
+    {time:'৭:১৫',end:'৭:৫০',emoji:'👨‍👩‍👦',title:'পরিবার ও বিশ্রাম',desc:'পরিবারের সঙ্গে সময় কাটাও।',cat:'বিশ্রাম'},
+    {time:'৮:০০',end:'৮:২০',emoji:'🕌',title:'এশার নামাজ',desc:'নামাজ আদায় করো।',cat:'ইবাদত'},
+    {time:'৮:২০',end:'৮:৪৫',emoji:'🍽️',title:'রাতের খাবার',desc:'পরিমিত রাতের খাবার খাও।',cat:'স্বাস্থ্য'},
+    {time:'৮:৪৫',end:'৯:০০',emoji:'💬',title:'কাস্টমার মেসেজ ও অর্ডার',desc:'Messenger চেক করো, অর্ডার ও কুরিয়ারের তথ্য লিখে রাখো।',cat:'ব্যবসা'},
+    {time:'৯:০০',end:'৯:৩০',emoji:'🌙',title:'মোবাইল বন্ধ ও ঘুমের প্রস্তুতি',desc:'Insights দেখা বন্ধ, পরের দিনের প্রস্তুতি ও মানসিক বিশ্রাম।',cat:'বিশ্রাম'},
+    {time:'৯:৩০',end:'—',emoji:'😴',title:'ঘুম',desc:'পর্যাপ্ত ঘুমের জন্য বিছানায় যাও।',cat:'স্বাস্থ্য'}
+  ];
+  const prayerMap = { 'ফজরের নামাজ':'fajrTime', 'জোহরের নামাজ':'zuhrTime', 'আসরের নামাজ':'asrTime', 'মাগরিবের নামাজ':'maghribTime', 'এশার নামাজ':'ishaTime' };
+  const $ = s => document.querySelector(s);
+  const banglaDigits = n => String(n).replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[Number(d)]);
+  const dateKey = () => new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Dhaka',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  const todayLabel = () => new Intl.DateTimeFormat('bn-BD',{timeZone:'Asia/Dhaka',weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date());
+  let currentFilter = 'সব';
+  let checked = {};
+  let savedTimes = {};
+  let installPrompt = null;
+  const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } };
+  const save = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+  const todayStoreKey = () => 'sc-routine-checks-' + dateKey();
+  const loadToday = () => { checked = read(todayStoreKey(), {}); };
+  function toast(message) { const el=$('#toast'); el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),2200); }
+  function displayTime(item) {
+    const key = prayerMap[item.title];
+    if (!key || !savedTimes[key]) return item.time + (item.end && item.end !== '—' ? '–'+item.end : '');
+    const [h,m] = savedTimes[key].split(':').map(Number);
+    const end = new Date(2000,0,1,h,m+20);
+    const fmt = d => banglaDigits(String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'));
+    return fmt(new Date(2000,0,1,h,m)) + '–' + fmt(end);
+  }
+  function render() {
+    const list = $('#timeline');
+    const visible = routine.map((r,i)=>({...r,i})).filter(r=>currentFilter==='সব'||r.cat===currentFilter);
+    list.innerHTML = visible.map(r=>`<article class="routine-item ${checked[r.i]?'done':''}">
+      <div class="timebox">${displayTime(r)}</div>
+      <div class="item-main"><div class="item-top"><span class="item-emoji">${r.emoji}</span><span class="item-title">${r.title}</span></div><div class="item-desc">${r.desc}</div><span class="item-tag">${r.cat}</span></div>
+      <input class="check" type="checkbox" aria-label="${r.title} সম্পন্ন" data-index="${r.i}" ${checked[r.i]?'checked':''} />
+    </article>`).join('');
+    list.querySelectorAll('.check').forEach(el=>el.addEventListener('change',()=>{ checked[el.dataset.index]=el.checked; save(todayStoreKey(),checked); updateProgress(); el.closest('.routine-item').classList.toggle('done',el.checked); }));
+    updateProgress();
+  }
+  function updateProgress() {
+    const total=routine.length, done=Object.values(checked).filter(Boolean).length, pct=Math.round(done/total*100);
+    $('#progressText').textContent=banglaDigits(pct)+'%'; $('#progressFill').style.width=pct+'%';
+    $('#doneCount').textContent=banglaDigits(done); $('#leftCount').textContent=banglaDigits(total-done);
+  }
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===pageId));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.page===pageId));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>showPage(t.dataset.page)));
+  $('#filters').addEventListener('click',e=>{const b=e.target.closest('[data-filter]'); if(!b)return; currentFilter=b.dataset.filter; document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c===b)); render();});
+  $('#resetToday').addEventListener('click',()=>{if(confirm('আজকের সব টিক মুছে নতুন করে শুরু করবে?')){checked={};save(todayStoreKey(),checked);render();toast('আজকের তালিকা রিসেট হয়েছে');}});
+  $('#todayDate').textContent=todayLabel();
+  savedTimes=read('sc-routine-times',{});
+  ['fajrTime','zuhrTime','asrTime','maghribTime','ishaTime'].forEach(id=>{if(savedTimes[id])$('#'+id).value=savedTimes[id];});
+  $('#saveTimes').addEventListener('click',()=>{['fajrTime','zuhrTime','asrTime','maghribTime','ishaTime'].forEach(id=>savedTimes[id]=$('#'+id).value);save('sc-routine-times',savedTimes);render();toast('নামাজের সময় সেভ হয়েছে');});
+  loadToday(); render();
+  let lastDate=dateKey();
+  setInterval(()=>{const now=dateKey(); if(now!==lastDate){lastDate=now;loadToday();$('#todayDate').textContent=todayLabel();render();}},30000);
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('#installBtn').hidden=false;});
+  $('#installBtn').addEventListener('click',async()=>{if(!installPrompt){toast('ব্রাউজারের মেনু থেকে Add to Home Screen বেছে নাও');return;}installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('#installBtn').hidden=true;});
+  if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+})();
+</script>
+</body>
+</html>
